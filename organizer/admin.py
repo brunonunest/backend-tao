@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from django.contrib.admin import ModelAdmin
-from .models import Tag, Enterprise
+from .models import Tag, Enterprise, NewsLink
 from django.utils.translation import gettext_lazy as _
 
 
@@ -20,4 +20,12 @@ class EnterpriseAdmin(ModelAdmin):
         (None, {"fields": ("name", "slug", "description",)}),
         (_("Data"), {"fields": ("founded_date", "contact", "website", "tags",)}),
     )
-adm
+
+
+@admin.register(NewsLink)
+class NewsLinkAdmin(ModelAdmin):
+    search_fields = ("name", "slug", "enterprise__slug", "enterprise__name",)
+    list_display = ("name", "slug", "pub_date", "link", "enterprise",)
+    fieldsets = (
+        (None, {"fields": ("name", "slug", "pub_date", "link", "enterprise",)}),
+    )
