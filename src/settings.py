@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'website.apps.WebsiteConfig',
     'rest_framework',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = "accounts.Account"
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
