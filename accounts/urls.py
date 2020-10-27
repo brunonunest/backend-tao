@@ -6,7 +6,7 @@ app_name = "accounts"
 
 router = DefaultRouter()
 
-router.register(r"login", views.LoginViewSet),
+#router.register(r"login", views.LoginViewSet),
 
 urlpatterns = [
     path('', include(router.urls)),
